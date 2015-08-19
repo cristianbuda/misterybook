@@ -8,3 +8,4 @@
 			<br><br>
 			<input type="submit" value="Subscribe">
 		</body>
+</html>
