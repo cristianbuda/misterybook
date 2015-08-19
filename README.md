@@ -1,1 +1,1 @@
-*M(i)steryBook.com
+M**i**steryBook.com
