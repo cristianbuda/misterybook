@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,15 +26,36 @@
 
 					<div class="panel-heading"><h3>Create an account</h3></div>
 
+					<div id="errors">
+
+
+
+						<?php 
+									
+					
+							if(isset($_SESSION['register_errors'])) {
+
+								for($i = 0; $i < count($_SESSION['register_errors']); $i ++ ) { ?>
+
+									<h3 class="bg-danger"><?php echo $_SESSION['register_errors'][$i]; ?></h3>
+
+								<?php }
+
+							}
+
+						?>
+
+					</div>
+
 					<div class="panel-body">
 
-						<form method="post" action="subscribe.html" role="form">
+						<form method="post" action="register.php" role="form">
 
 							<div class="form-group">
 
 								<label for="name">Your name</label>
 
-								<input type="text" name="name" id="name" placeholder="Your name" class="form-control" required>
+								<input type="text" name="name" id="name" placeholder="Your name" class="form-control" required value="<?php if(isset($_SESSION['name'])) {echo $_SESSION['name'];}?>">
 
 							</div>
 
@@ -41,7 +63,7 @@
 
 								<label for="email">Email</label>
 
-								<input type="email" name="email" id="email" placeholder="Your email" class="form-control" required>
+								<input type="email" name="email" id="email" placeholder="Your email" class="form-control" required value="<?php if(isset($_SESSION['email'])) {echo $_SESSION['email'];}?>">
 
 							</div>
 
@@ -49,7 +71,7 @@
 
 								<label for="bio">Short bio</label>
 
-								<textarea name="bio" id="bio" class="form-control" rows="8"></textarea>
+								<textarea name="bio" id="bio" class="form-control" rows="8"><?php if(isset($_SESSION['bio'])) {echo $_SESSION['bio'];}?></textarea>
 
 							</div>
 
@@ -69,7 +91,7 @@
 
 							</div>
 
-							<input type="submit" name="subscribe" value="Register" class="btn btn-info">
+							<input type="submit" name="register" value="Register" class="btn btn-info">
 
 						</form> <!--END form-->
 
