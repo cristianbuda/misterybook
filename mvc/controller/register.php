@@ -1,7 +1,7 @@
 <?php
 	
-	$dbc = mysqli_connect('localhost', 'root', '', 'misterybook') or die(mysqli_error($dbc));
-	session_start();
+	// $dbc = mysqli_connect('localhost', 'root', '', 'misterybook') or die(mysqli_error($dbc));
+	// session_start();
 
 	if(isset($_SESSION['register_errors'])) {
 		unset($_SESSION['register_errors']);
@@ -18,8 +18,8 @@
 		$name = mysqli_real_escape_string($dbc, $_POST['name']);
 		$email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
 		$bio = mysqli_real_escape_string($dbc, $_POST['bio']);
-		$password = sha1($_POST['password']);
-		$confirm = sha1($_POST['confirm']);
+		$password = sha1(SHA1_SALT . $_POST['password']);
+		$confirm = sha1(SHA1_SALT . $_POST['confirm']);
 
 		if($email == false) {
 
@@ -58,7 +58,7 @@
 
 			if($r) {
 
-				header('Location: login.tpl.php');
+				header('Location: index.php?controller=login');
 				
 				break;
 
@@ -72,7 +72,7 @@
 		$_SESSION['name'] = $name;
 		$_SESSION['email'] = $email;
 		$_SESSION['bio'] = $bio;
-		header('Location: register.tpl.php');
+		header('Location: index.php?controller=register');
 
 	}
 
