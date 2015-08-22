@@ -1,22 +1,12 @@
-<?php session_start();?>
 <!DOCTYPE html>
 <html>
 	<head>
-
-		<title>Subscribe</title>
-
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-
+		<?php include "_head.tpl.php"; ?>
 	</head>
 
 	<body>
+		<?php include "_header.tpl.php"; ?>
+
 
 		<div class="row" style="margin: 0;">
 
@@ -49,7 +39,7 @@
 
 					<div class="panel-body">
 
-						<form method="post" action="register.php" role="form">
+						<form method="post" action="index.php?controller=register" role="form">
 
 							<div class="form-group">
 
@@ -103,6 +93,6 @@
 
 		</div> <!--END row-->
 
+		<?php include "_footer.tpl.php"; ?>   
 	</body>
-
 </html>
