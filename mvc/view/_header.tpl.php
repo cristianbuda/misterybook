@@ -16,8 +16,14 @@
 						<li class="active"><a href="#">Home</a></li>
 						<li><a  href="#">Previous books</a></li>
 						<li><a  href="#">How does it work</a></li>
-						<li><a  href="#">Register</a></li>
-						<li><a  href="#">Login</a></li>
+
+						<?php if (isset($user)) : ?>
+							<li><a  href="index.php?controller=logout">Logout</a></li>
+						<?php  else : ?>
+							<li><a  href="index.php?controller=register">Register</a></li>
+							<li><a  href="index.php?controller=login">Login</a></li>
+						<?php endif;?>
+
 					</ul>
 				</div>
 			</div>
