@@ -45,4 +45,34 @@ function user_get_details($user_id)
 
 }
 
+function user_email_exists ($email) {
+
+  global $dbc;
+
+  $q = "SELECT * FROM users WHERE email = '$email'";
+  $r = mysqli_query($dbc, $q);
+
+  if ($user_exists = mysqli_fetch_assoc($r)) {
+    return TRUE; 
+  } else {
+    return FALSE;
+  }
+
+}
+
+function user_insert ($name, $email, $bio, $password) {
+
+  global $dbc;
+
+  $q = "INSERT INTO users (name, email, bio, password) VALUES ('$name', '$email', '$bio', '$password')";
+  $r = mysqli_query($dbc, $q);
+
+  if ($r) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
+
+}
+
 ?>
