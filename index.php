@@ -28,10 +28,10 @@ $view = $controller;
 
 include 'mvc/controller/' . $controller . '.php';
 
-if(!file_exists(realpath('mvc/view/' . $view . '.tpl.php'))) {
-	$view = 'index';
+if (!file_exists(realpath('mvc/view/' . $view . '.tpl.php'))) {
+    $view = 'index';
 }
 
 include 'mvc/view/' . $view . '.tpl.php';
 
-?>
+?> 
