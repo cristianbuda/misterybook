@@ -24,8 +24,14 @@ if (isset($_GET['controller'])) {
   }
 }
 
+$view = $controller;
+
 include 'mvc/controller/' . $controller . '.php';
 
-include 'mvc/view/' . $controller . '.tpl.php';
+if (!file_exists(realpath('mvc/view/' . $view . '.tpl.php'))) {
+    $view = 'index';
+}
 
-?>
+include 'mvc/view/' . $view . '.tpl.php';
+
+?> 
