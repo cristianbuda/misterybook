@@ -49,10 +49,10 @@ function user_email_exists ($email) {
 
   global $dbc;
 
-  $q = "SELECT * FROM users WHERE email = '$email'";
-  $r = mysqli_query($dbc, $q);
+  $query = "SELECT * FROM users WHERE email = '$email'";
+  $result = mysqli_query($dbc, $query);
 
-  if ($user_exists = mysqli_fetch_assoc($r)) {
+  if ($user_exists = mysqli_fetch_assoc($result)) {
     return TRUE; 
   } else {
     return FALSE;
@@ -64,10 +64,10 @@ function user_insert ($name, $email, $bio, $password) {
 
   global $dbc;
 
-  $q = "INSERT INTO users (name, email, bio, password) VALUES ('$name', '$email', '$bio', '$password')";
-  $r = mysqli_query($dbc, $q);
+  $query = "INSERT INTO users (name, email, bio, password) VALUES ('$name', '$email', '$bio', '$password')";
+  $result = mysqli_query($dbc, $query);
 
-  if ($r) {
+  if ($result) {
     return TRUE;
   } else {
     return FALSE;
