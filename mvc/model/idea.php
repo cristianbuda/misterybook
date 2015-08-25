@@ -1,19 +1,55 @@
 <?php
 
-    include_once('language.php');
-    include_once('genre.php');
+    function idea_get_language ($idea_id)
+    {
+        global $dbc;
+        
+        $query = "SELECT languages.id, languages.name 
+        FROM languages 
+            LEFT JOIN ideas 
+                ON languages.id = ideas.language_id 
+        WHERE ideas.id = '$idea_id'";
+        
+        $result = mysqli_query($dbc, $query);
 
-    function idea_get ($id)
+        $language = mysqli_fetch_assoc($result);
+
+        return $language;
+    }
+
+
+    function idea_get_genres ($idea_id)
+    {
+        global $dbc;
+
+        $genres = array();
+
+        $query = "SELECT genres.id as id, genres.name as name 
+        FROM idea_genres
+            LEFT JOIN genres
+                ON idea_genres.genre_id = genres.id
+        WHERE idea_genres.idea_id = '$idea_id'";
+
+        $result = mysqli_query($dbc, $query);
+
+        while ($genre = mysqli_fetch_assoc($result)) {
+            $genres[] = $genre;
+        }
+
+        return $genres;
+    }
+
+    function idea_get ($idea_id)
     {
         global $dbc;
         
 
-        $q = "SELECT * 
+        $query = "SELECT * 
         FROM ideas 
-        WHERE id = '$id'";
+        WHERE id = '$idea_id'";
 
-        $r = mysqli_query($dbc, $q);
-        $idea_row = mysqli_fetch_assoc($r);
+        $result = mysqli_query($dbc, $query);
+        $idea_row = mysqli_fetch_assoc($result);
 
         if (empty($idea_row)) {
 
@@ -21,8 +57,8 @@
 
         } else {
 
-            $language = language_get($id);
-            $genres = genre_get($id);
+            $language = idea_get_language($idea_id);
+            $genres = idea_get_genres($idea_id);
 
             $idea = array(
                 'id' => $idea_row['id'],
