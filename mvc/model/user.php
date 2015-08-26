@@ -68,7 +68,7 @@ function user_insert ($name, $email, $bio, $password) {
   $result = mysqli_query($dbc, $query);
 
   if ($result) {
-    return TRUE;
+    return mysqli_insert_id($dbc);
   } else {
     return FALSE;
   }
