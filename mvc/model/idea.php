@@ -4,11 +4,11 @@
     {
         global $dbc;
         
-        $query = "SELECT languages.id, languages.name 
-        FROM languages 
-            LEFT JOIN ideas 
-                ON languages.id = ideas.language_id 
-        WHERE ideas.id = '$idea_id'";
+        $query = "SELECT languages.*
+        FROM ideas 
+            INNER JOIN languages 
+                ON  ideas.language_id = languages.id
+                AND ideas.id = $idea_id";
         
         $result = mysqli_query($dbc, $query);
 
@@ -24,11 +24,11 @@
 
         $genres = array();
 
-        $query = "SELECT genres.id as id, genres.name as name 
-        FROM idea_genres
-            LEFT JOIN genres
-                ON idea_genres.genre_id = genres.id
-        WHERE idea_genres.idea_id = '$idea_id'";
+        $query = "SELECT genres.*
+        FROM genres
+            INNER JOIN idea_genres
+                ON genres.id = idea_genres.genre_id
+        WHERE idea_genres.idea_id = $idea_id";
 
         $result = mysqli_query($dbc, $query);
 
@@ -46,7 +46,7 @@
 
         $query = "SELECT * 
         FROM ideas 
-        WHERE id = '$idea_id'";
+        WHERE id = $idea_id";
 
         $result = mysqli_query($dbc, $query);
         $idea_row = mysqli_fetch_assoc($result);
