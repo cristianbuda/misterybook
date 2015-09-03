@@ -1,6 +1,6 @@
 	<div class= "header container">
 		<div class="logo">
-			<a class="pull-left" href="#"><img src="img/logo.jpg" title="M(i)steryBook" alt="M(i)steryBook" /></a>  
+			<a class="pull-left" href="#"><img src="../../img/logo.jpg" title="M(i)steryBook" alt="M(i)steryBook" /></a>  
 		</div>
 		<div class="navbar navbar-default pull-right">
 			<div class="container-fluid">
