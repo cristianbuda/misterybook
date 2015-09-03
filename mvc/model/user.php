@@ -28,6 +28,7 @@ function user_get_id($email, $password)
 function user_get_details($user_id)
 {
   global $dbc;
+  $user_row = FALSE;
 
   $sql = '
     SELECT id, name, email 
@@ -42,8 +43,8 @@ function user_get_details($user_id)
   }
 
   return $user_row;
-
-}
+ 
+ }
 
 function user_email_exists ($email) {
 
