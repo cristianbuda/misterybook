@@ -1,98 +1,97 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<?php include "_head.tpl.php"; ?>
-	</head>
+    <head>
+        <?php include "_head.tpl.php"; ?>
+    </head>
 
-	<body>
-		<?php include "_header.tpl.php"; ?>
-
-
-		<div class="row" style="margin: 0;">
-
-			<div class="col-md-6 col-md-offset-3">
-
-				<div class="panel panel-info">
-
-					<div class="panel-heading"><h3>Create an account</h3></div>
-
-					<div id="errors">
+    <body>
+        <?php include "_header.tpl.php"; ?>
 
 
+        <div class="row" style="margin: 0;">
 
-						<?php 
-									
-					
-							if(isset($_SESSION['register_errors'])) {
+            <div class="col-md-6 col-md-offset-3">
 
-								for($i = 0; $i < count($_SESSION['register_errors']); $i ++ ) { ?>
+                <div class="panel panel-info">
 
-									<h3 class="bg-danger"><?php echo $_SESSION['register_errors'][$i]; ?></h3>
+                    <div class="panel-heading"><h3>Create an account</h3></div>
 
-								<?php }
+                    <div id="errors">
 
-							}
 
-						?>
+                        <?php 
+                                    
+                            
+                            if(isset($_SESSION['register_errors'])) {
 
-					</div>
+                                for($i = 0; $i < count($_SESSION['register_errors']); $i ++ ) { ?>
 
-					<div class="panel-body">
+                                    <h3 class="bg-danger"><?php echo $_SESSION['register_errors'][$i]; ?></h3>
 
-						<form method="post" action="index.php?controller=register" role="form">
+                                <?php }
 
-							<div class="form-group">
+                            }
 
-								<label for="name">Your name</label>
+                        ?>
 
-								<input type="text" name="name" id="name" placeholder="Your name" class="form-control" required value="<?php if(isset($_SESSION['name'])) {echo $_SESSION['name'];}?>">
+                    </div>
 
-							</div>
+                    <div class="panel-body">
 
-							<div class="form-group">
+                        <form method="post" action="index.php?controller=register" role="form">
 
-								<label for="email">Email</label>
+                            <div class="form-group">
 
-								<input type="email" name="email" id="email" placeholder="Your email" class="form-control" required value="<?php if(isset($_SESSION['email'])) {echo $_SESSION['email'];}?>">
+                                <label for="name">Your name</label>
 
-							</div>
+                                <input type="text" name="name" id="name" placeholder="Your name" class="form-control" required value="<?php if(isset($_SESSION['name'])) {echo $_SESSION['name'];}?>">
 
-							<div class="form-group">
+                            </div>
 
-								<label for="bio">Short bio</label>
+                            <div class="form-group">
 
-								<textarea name="bio" id="bio" class="form-control" rows="8"><?php if(isset($_SESSION['bio'])) {echo $_SESSION['bio'];}?></textarea>
+                                <label for="email">Email</label>
 
-							</div>
+                                <input type="email" name="email" id="email" placeholder="Your email" class="form-control" required value="<?php if(isset($_SESSION['email'])) {echo $_SESSION['email'];}?>">
 
-							<div class="form-group">
+                            </div>
 
-								<label for="password">Password</label>
+                            <div class="form-group">
 
-								<input type="password" name="password" id="password" placeholder="Your password" class="form-control" required>
+                                <label for="bio">Short bio</label>
 
-							</div>
+                                <textarea name="bio" id="bio" class="form-control" rows="8"><?php if(isset($_SESSION['bio'])) {echo $_SESSION['bio'];}?></textarea>
 
-							<div class="form-group">
+                            </div>
 
-								<label for="confirm">Confirm password</label>
+                            <div class="form-group">
 
-								<input type="password" name="confirm" id="confirm" placeholder="Confirm password" class="form-control" required>
+                                <label for="password">Password</label>
 
-							</div>
+                                <input type="password" name="password" id="password" placeholder="Your password" class="form-control" required>
 
-							<input type="submit" name="register" value="Register" class="btn btn-info">
+                            </div>
 
-						</form> <!--END form-->
+                            <div class="form-group">
 
-					</div> <!--END panel body-->
+                                <label for="confirm">Confirm password</label>
 
-				</div> <!--END panel-->
+                                <input type="password" name="confirm" id="confirm" placeholder="Confirm password" class="form-control" required>
 
-			</div> <!--END col-->
+                            </div>
 
-		</div> <!--END row-->
+                            <input type="submit" name="register" value="Register" class="btn btn-info">
 
-		<?php include "_footer.tpl.php"; ?>   
-	</body>
+                        </form> <!--END form-->
+
+                    </div> <!--END panel body-->
+
+                </div> <!--END panel-->
+
+            </div> <!--END col-->
+
+        </div> <!--END row-->
+
+        <?php include "_footer.tpl.php"; ?>   
+    </body>
 </html>
