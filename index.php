@@ -11,6 +11,8 @@ include 'config.php';
 
 // Database connection
 $dbc = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die(mysqli_error($dbc));
+// Database connection singleton
+// include 'mvc/model/DB.php';
 
 // Check user
 if (isset($_SESSION['user_id'])) {
