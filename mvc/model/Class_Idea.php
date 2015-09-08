@@ -35,8 +35,6 @@ class Idea
 		public function setLanguageID($language) {
 			$query = "SELECT id FROM languages WHERE name = '$language'";
 			$this->language_id = $this->_dbh->query($query);
-			//$selected_language = new Languages(); 
-			//$this->language_id = $selected_language->getId($language); 
 		}
 
 		public function setLength($length) {
@@ -69,7 +67,7 @@ class Idea
                 'language' => $this->getLanguageID(),
                 'length' => $this->getLength(),
                 'rating' => $this->getLength(),
-                'genres' => $this->getGenreIds()
+                'genres' => $this->getGenres()
             );
 		}
 
@@ -111,7 +109,7 @@ class Idea
 	                ON genres.id = idea_genres.genre_id
 	        WHERE idea_genres.idea_id = $this->id";
 
-	        foreach ($this->_dbh as $genre) {
+	        foreach ($this->_dbh->query($query) as $genre) {
 	        	$genres[] = $genre;
 	        }
 
